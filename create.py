@@ -22,48 +22,48 @@ if __name__ == '__main__':
     
     connection.execute("""CREATE TABLE IF NOT EXISTS executor (
         id serial primary key,
-        name varchar(40));
-        """)
+        name varchar(40)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS genre (
         id serial primary key,
-        name varchar(40));
-        """)
+        name varchar(40)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS executor_genre (
         id serial primary key,
         genre_id integer not null references genre(id),
-        executor_id integer not null references executor(id));
-        """)
+        executor_id integer not null references executor(id)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS album (
         id serial primary key,
         name varchar(40),
-        album_date int);
-        """)
+        album_date int
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS executor_album (
         id serial primary key,
         date int,
         album_id integer not null references album(id),
-        executor_id integer not null references executor(id));
-        """)
+        executor_id integer not null references executor(id)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS track (
         id serial primary key,
         name varchar(40),
         duratation numeric,
-        album_id serial unique not null references album(id));
-        """)
+        album_id serial unique not null references album(id)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS collection (
         id serial primary key,
         name varchar(40),
-        date integer);
-        """)
+        date integer)
+        ;""")
     
     connection.execute("""CREATE TABLE IF NOT EXISTS track_collection (
         id serial primary key,
         track_id integer not null references track(id),
-        collection_id integer not null references collection(id));
-        """)
+        collection_id integer not null references collection(id))
+        ;""")
